@@ -23,6 +23,7 @@ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR P
 #include "advanced_keycodes.h"
 #define MAX_NO_LAYERS 10 //6
 #include "Key.h"
+#include "KeyScanner.h"
 #include <array>
 
 #ifndef KEYMAP_H
@@ -35,34 +36,34 @@ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR P
 #define _ADJUST  4
 #define _ARROWS  5
 
-#define KM_COLE MC(KC_A);
-#define KM_QWRT MC(KC_B);
-#define KM_RKLG MC(KC_C);
-#define KM_FPS MC(KC_D);
+#define KM_COLE MC(KC_A)
+#define KM_QWRT MC(KC_B)
+#define KM_RKLG MC(KC_C)
+#define KM_FPS MC(KC_D)
 
-#define ALT_F4 LALT(KC_F4);
-#define WKSPC_L LCTL(LGUI(KC_LEFT));
-#define WKSPC_R LCTL(LGUI(KC_RIGHT));
-#define TSK_MGR LCTL(LSFT(KC_ESC));
+#define ALT_F4 LALT(KC_F4)
+#define WKSPC_L LCTL(LGUI(KC_LEFT))
+#define WKSPC_R LCTL(LGUI(KC_RIGHT))
+#define TSK_MGR LCTL(LSFT(KC_ESC))
 
-#define C_BSPC LCTL(KC_BSPC);
-#define C_REDO LCTL(LSFT((KC_Z));
-#define C_UNDO LCTL(KC_Z);
-#define C_CUT LCTL(KC_X);
-#define C_COPY LCTL(KC_C);
-#define C_PASTE LCTL(KC_V);
-#define C_SELCT LCTL(KC_A);
-#define C_LEFT LCTL(KC_LEFT);
-#define C_RIGHT LCTL(KC_RGHT);
+#define C_BSPC LCTL(KC_BSPC)
+#define C_REDO LCTL(LSFT((KC_Z))
+#define C_UNDO LCTL(KC_Z)
+#define C_CUT LCTL(KC_X)
+#define C_COPY LCTL(KC_C)
+#define C_PASTE LCTL(KC_V)
+#define C_SELCT LCTL(KC_A)
+#define C_LEFT LCTL(KC_LEFT)
+#define C_RIGHT LCTL(KC_RGHT)
 
-#define SDP_AUT LALT(KC_F10);
-#define SDP_MAN LALT(KC_F9);
-#define SDP_TOG LSFT(LALT(KC_F10));
-#define SDP_OPT LALT(KC_PSCR);
+#define SDP_AUT LALT(KC_F10)
+#define SDP_MAN LALT(KC_F9)
+#define SDP_TOG LSFT(LALT(KC_F10))
+#define SDP_OPT LALT(KC_PSCR)
 
-#define SCRNSHT LSFT(LGUI(KC_S));
+#define SCRNSHT LSFT(LGUI(KC_S))
 
-#define OSMLSFT OS(KC_LSFT);
+#define OSMLSFT OS(KC_LSFT)
 
 void setupKeymap();
 void setupColemakKeymap();
@@ -71,6 +72,7 @@ void setupRKLGKeymap();
 void setupFPSKeymap();
 
 void process_user_macros(uint16_t macroid);
+void process_user_layers(uint16_t layermask);
 
 extern std::array<std::array<Key, MATRIX_COLS>, MATRIX_ROWS> matrix;
 
